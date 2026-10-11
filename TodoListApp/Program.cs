@@ -39,6 +39,42 @@ namespace TodoListApp
                     case "profile":
                         Console.WriteLine($"{firstName} {lastName}, {birthYear}");
                         break;
+                    case "add":
+                        if (string.IsNullOrWhiteSpace(argument))
+                        {
+                            Console.WriteLine("Введите текст задачи:");
+                            break;
+                        }
+                        string task = argument.Trim('"');
+                        if (taskCount == todos.Length)
+                        {
+                            string[] newTodos = new string[todos.Length * 2];
+                            for (int i = 0; i < todos.Length; i++)
+                            {
+                                newTodos[i] = todos[i];
+                            }
+                            todos = newTodos;
+                        }
+                        todos[taskCount] = task;
+                        taskCount++;
+                        Console.WriteLine("Задача добавлена.");
+                        break;
+                    case "view":
+                        if (taskCount == 0)
+                        {
+                            Console.WriteLine("Список задач пуст.");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < taskCount; i++)
+                            {
+                                if (!string.IsNullOrEmpty(todos[i]))
+                                {
+                                    Console.WriteLine($"{i + 1}. {todos[i]}");
+                                }
+                            }
+                        }
+                        break;
                     case "exit":
                         Console.WriteLine("Завершение работы программы.");
                         return;
