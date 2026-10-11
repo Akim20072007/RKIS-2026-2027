@@ -27,14 +27,24 @@ namespace TodoListApp
                     continue;
                 string command = parts[0].ToLower();
                 string argument = parts.Length > 1 ? parts[1] : "";
-                if (command == "exit")
+                switch (command)
                 {
-                    Console.WriteLine("Завершение работы программы.");
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine($"Команда '{command}' принята. Аргумент: '{argument}'");
+                    case "help":
+                        Console.WriteLine("help - список команд");
+                        Console.WriteLine("profile - данные пользователя");
+                        Console.WriteLine("add \"текст задачи\" - добавить задачу");
+                        Console.WriteLine("view - показать задачи");
+                        Console.WriteLine("exit - выход");
+                        break;
+                    case "profile":
+                        Console.WriteLine($"{firstName} {lastName}, {birthYear}");
+                        break;
+                    case "exit":
+                        Console.WriteLine("Завершение работы программы.");
+                        return;
+                    default:
+                        Console.WriteLine("Неизвестная команда. Введите help.");
+                        break;
                 }
             }
         }
