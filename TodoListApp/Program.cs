@@ -15,7 +15,9 @@ namespace TodoListApp
             int currentYear = DateTime.Now.Year;
             int age = currentYear - birthYear;
             Console.WriteLine($"Добавлен пользователь {firstName} {lastName}, возраст - {age}.");
-            Console.ReadLine();
+            string[] todos = new string[2];
+            int taskCount = 0;
+            Console.WriteLine("Добро пожаловать в TodoList! Введите help для отображения списка команд.");
         }
     }
 }
